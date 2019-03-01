@@ -22,12 +22,18 @@ public class MainActivity extends AppCompatActivity {
     public void Control(View v){
 
         int permissionCheck = ContextCompat.checkSelfPermission(this,Manifest.permission.VIBRATE);
- if(permissionCheck== PackageManager.PERMISSION_GRANTED)
-     Toast.makeText(this,"OK!",Toast.LENGTH_LONG).show();
- else
-     Toast.makeText(this,"No !",Toast.LENGTH_LONG).show();
+        int permissionCheck2 = ContextCompat.checkSelfPermission(this,Manifest.permission.READ_CONTACTS);
 
+
+        if(permissionCheck2== PackageManager.PERMISSION_GRANTED)
+     Toast.makeText(this,"OK!",Toast.LENGTH_LONG).show();
+ else {
+            Toast.makeText(this, "No !", Toast.LENGTH_LONG).show();
+
+            requestPermissions(this,  new String[]{Manifest.permission.WRITE_CALENDAR}, 1967);
+ }
 
 
     }
+
 }
