@@ -2,6 +2,7 @@ package org.kasapbasi.week20190401;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,8 +17,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+switch(requestCode){
+
+    case 1967:
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            Toast.makeText(this,"TEŞEKKÜRLER TAKVİME ERİŞİYORUM",Toast.LENGTH_LONG).show();
+        }
+
+        break;
+
+
+}
+
+    }
 
     public void Control(View v){
 
@@ -30,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
  else {
             Toast.makeText(this, "No !", Toast.LENGTH_LONG).show();
 
-            requestPermissions(this,  new String[]{Manifest.permission.WRITE_CALENDAR}, 1967);
+
+              requestPermissions( new String[]{Manifest.permission.WRITE_CALENDAR}, 1967);
  }
 
 
